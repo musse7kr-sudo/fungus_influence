@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "fungus_influence_db";
+$dbname = "fungus_influence";
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
