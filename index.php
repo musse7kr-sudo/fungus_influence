@@ -23,23 +23,34 @@
 </header>
 
 <section class="hero">
+    <div class="hero-overlay"></div>
+
     <div class="hero-content">
-     <img src="images/logo.jpg" alt="The Last of Us logo" class="hero-logo">
-        <p>Utforska merch, atmosfär och en värld präglad av överlevnad, förfall och svampinfektion.</p>
+        <img src="images/logo.png" alt="The Last of Us logo" class="hero-logo">
+
+        <p class="hero-text">
+            Utforska merch, atmosfär och en värld präglad av överlevnad,
+            förfall och svampinfektion.
+        </p>
+
         <a href="merch.php" class="btn">Se merch</a>
     </div>
 </section>
 
-<section class="section">
+<section class="section intro-section">
     <h2>Välkommen</h2>
     <p>
-        Fungus Influence är en inofficiell tribute-sida inspirerad av spelet och tv-serien The Last of Us.
-        Här visar vi upp mörk design, tematiska produkter och en stil som passar den postapokalyptiska känslan.
+        Fungus Influence är en inofficiell tribute-sida inspirerad av spelet och tv-serien
+        The Last of Us. Här visar vi upp mörk design, tematiska produkter och en stil som
+        passar den postapokalyptiska känslan.
     </p>
 </section>
 
 <footer>
-    <p>Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad till de officiella rättighetsinnehavarna.</p>
+    <p>
+        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
+        till de officiella rättighetsinnehavarna.
+    </p>
 </footer>
 
 </body>
