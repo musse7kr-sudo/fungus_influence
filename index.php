@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -16,8 +19,14 @@
             <li><a href="about.php">Om</a></li>
             <li><a href="merch.php">Merch</a></li>
             <li><a href="contact.php">Kontakt</a></li>
-            <li><a href="login.php">Logga in</a></li>
-            <li><a href="register.php">Registrera</a></li>
+
+            <?php if (isset($_SESSION['username'])): ?>
+                <li><span class="user-welcome">Hej, <?php echo htmlspecialchars($_SESSION['username']); ?></span></li>
+                <li><a href="logout.php">Logga ut</a></li>
+            <?php else: ?>
+                <li><a href="login.php">Logga in</a></li>
+                <li><a href="register.php">Registrera</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>
