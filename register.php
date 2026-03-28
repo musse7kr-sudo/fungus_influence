@@ -1,3 +1,23 @@
+<?php
+include 'db.php';
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sss", $username, $email, $password);
+
+    if (mysqli_stmt_execute($stmt)) {
+        $message = "Registrering lyckades!";
+    } else {
+        $message = "Något gick fel. E-postadressen kanske redan finns.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -24,10 +44,15 @@
 
 <section class="section">
     <h2>Registrera konto</h2>
-    <form>
-        <input type="text" placeholder="Användarnamn" required>
-        <input type="email" placeholder="E-post" required>
-        <input type="password" placeholder="Lösenord" required>
+
+    <?php if ($message): ?>
+        <p><?php echo $message; ?></p>
+    <?php endif; ?>
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Användarnamn" required>
+        <input type="email" name="email" placeholder="E-post" required>
+        <input type="password" name="password" placeholder="Lösenord" required>
         <button type="submit">Registrera</button>
     </form>
 </section>
