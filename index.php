@@ -26,7 +26,7 @@
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-        <img src="images/logo.png" alt="The Last of Us logo" class="hero-logo">
+        <img src="images/logo.jpg" alt="The Last of Us logo" class="hero-logo">
 
         <p class="hero-text">
             Utforska merch, atmosfär och en värld präglad av överlevnad,
