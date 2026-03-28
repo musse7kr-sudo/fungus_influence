@@ -5,16 +5,29 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sss", $username, $email, $password);
+    if (!empty($username) && !empty($email) && !empty($password)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if (mysqli_stmt_execute($stmt)) {
-        $message = "Registrering lyckades!";
+        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPassword);
+
+            if (mysqli_stmt_execute($stmt)) {
+                $message = "Registrering lyckades! Du kan nu logga in.";
+            } else {
+                $message = "Något gick fel. E-postadressen kanske redan används.";
+            }
+
+            mysqli_stmt_close($stmt);
+        } else {
+            $message = "Kunde inte förbereda frågan.";
+        }
     } else {
-        $message = "Något gick fel. E-postadressen kanske redan finns.";
+        $message = "Alla fält måste fyllas i.";
     }
 }
 ?>
@@ -23,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrera</title>
+    <title>Registrera - Fungus Influence</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,23 +55,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
 </header>
 
-<section class="section">
+<section class="section intro-section">
     <h2>Registrera konto</h2>
+    <p>Skapa ett konto för att bli en del av Fungus Influence.</p>
+</section>
 
-    <?php if ($message): ?>
-        <p><?php echo $message; ?></p>
-    <?php endif; ?>
+<section class="section contact-wrapper">
+    <div class="contact-card">
+        <h3>Registrering</h3>
 
-    <form method="POST">
-        <input type="text" name="username" placeholder="Användarnamn" required>
-        <input type="email" name="email" placeholder="E-post" required>
-        <input type="password" name="password" placeholder="Lösenord" required>
-        <button type="submit">Registrera</button>
-    </form>
+        <?php if (!empty($message)): ?>
+            <p><?php echo htmlspecialchars($message); ?></p>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <input type="text" name="username" placeholder="Användarnamn" required>
+            <input type="email" name="email" placeholder="E-post" required>
+            <input type="password" name="password" placeholder="Lösenord" required>
+            <button type="submit">Registrera</button>
+        </form>
+    </div>
+
+    <div class="contact-card">
+        <h3>Information</h3>
+        <p>Efter registrering kan du logga in på sidan.</p>
+        <p>Dina uppgifter sparas i databasen och lösenordet krypteras säkert.</p>
+    </div>
 </section>
 
 <footer>
-    <p>Detta är en inofficiell tribute-sida inspirerad av The Last of Us.</p>
+    <p>
+        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
+        till de officiella rättighetsinnehavarna.
+    </p>
 </footer>
 
 </body>
