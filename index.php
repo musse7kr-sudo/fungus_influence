@@ -23,8 +23,6 @@
 </header>
 
 <section class="hero">
-    <div class="hero-overlay"></div>
-
     <div class="hero-content">
         <img src="images/logo.jpg" alt="The Last of Us logo" class="hero-logo">
 
