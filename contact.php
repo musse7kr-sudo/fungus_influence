@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt</title>
+    <title>Kontakt - Fungus Influence</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,18 +22,40 @@
     </nav>
 </header>
 
-<section class="section">
+<section class="section intro-section">
     <h2>Kontakta oss</h2>
-    <form>
-        <input type="text" placeholder="Ditt namn" required>
-        <input type="email" placeholder="Din e-post" required>
-        <textarea rows="6" placeholder="Skriv ditt meddelande" required></textarea>
-        <button type="submit">Skicka</button>
-    </form>
+    <p>
+        Har du frågor om vår tribute-sida, våra produkter eller vill du veta mer om projektet?
+        Skicka ett meddelande till oss här nedanför.
+    </p>
+</section>
+
+<section class="section contact-wrapper">
+    <div class="contact-card">
+        <h3>Skicka ett meddelande</h3>
+
+        <form>
+            <input type="text" placeholder="Ditt namn" required>
+            <input type="email" placeholder="Din e-post" required>
+            <textarea rows="6" placeholder="Skriv ditt meddelande här..." required></textarea>
+            <button type="submit">Skicka</button>
+        </form>
+    </div>
+
+    <div class="contact-card">
+        <h3>Information</h3>
+        <p><strong>Projekt:</strong> Fungus Influence</p>
+        <p><strong>Typ:</strong> Inofficiell tribute-sida</p>
+        <p><strong>Fokus:</strong> Mörk design, merch och postapokalyptisk känsla</p>
+        <p><strong>Obs:</strong> Detta är ett skolprojekt och sidan är inte officiellt kopplad till rättighetsinnehavarna.</p>
+    </div>
 </section>
 
 <footer>
-    <p>Detta är en inofficiell tribute-sida inspirerad av The Last of Us.</p>
+    <p>
+        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
+        till de officiella rättighetsinnehavarna.
+    </p>
 </footer>
 
 </body>
