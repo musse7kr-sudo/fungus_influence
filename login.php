@@ -7,22 +7,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    if (!empty($email) && !empty($password)) {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = mysqli_prepare($conn, $sql);
 
-    if ($user = mysqli_fetch_assoc($result)) {
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['username'] = $user['username'];
-            header("Location: index.php");
-            exit();
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if ($user = mysqli_fetch_assoc($result)) {
+                if (password_verify($password, $user['password'])) {
+                    $_SESSION['username'] = $user['username'];
+                    header("Location: index.php");
+                    exit();
+                } else {
+                    $message = "Fel lösenord.";
+                }
+            } else {
+                $message = "Ingen användare hittades med den e-posten.";
+            }
+
+            mysqli_stmt_close($stmt);
         } else {
-            $message = "Fel lösenord.";
+            $message = "Kunde inte förbereda frågan.";
         }
     } else {
-        $message = "Ingen användare hittades med den e-posten.";
+        $message = "Alla fält måste fyllas i.";
     }
 }
 ?>
@@ -31,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logga in</title>
+    <title>Logga in - Fungus Influence</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,22 +61,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
 </header>
 
-<section class="section">
+<section class="section intro-section">
     <h2>Logga in</h2>
+    <p>Logga in med ditt konto för att fortsätta.</p>
+</section>
 
-    <?php if ($message): ?>
-        <p><?php echo $message; ?></p>
-    <?php endif; ?>
+<section class="section contact-wrapper">
+    <div class="contact-card">
+        <h3>Inloggning</h3>
 
-    <form method="POST">
-        <input type="email" name="email" placeholder="E-post" required>
-        <input type="password" name="password" placeholder="Lösenord" required>
-        <button type="submit">Logga in</button>
-    </form>
+        <?php if (!empty($message)): ?>
+            <p><?php echo htmlspecialchars($message); ?></p>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <input type="email" name="email" placeholder="E-post" required>
+            <input type="password" name="password" placeholder="Lösenord" required>
+            <button type="submit">Logga in</button>
+        </form>
+    </div>
+
+    <div class="contact-card">
+        <h3>Information</h3>
+        <p>Om du redan har registrerat dig kan du logga in här.</p>
+        <p>Om du inte har ett konto ännu, gå till registreringssidan först.</p>
+    </div>
 </section>
 
 <footer>
-    <p>Detta är en inofficiell tribute-sida inspirerad av The Last of Us.</p>
+    <p>
+        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
+        till de officiella rättighetsinnehavarna.
+    </p>
 </footer>
 
 </body>
