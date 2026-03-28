@@ -312,3 +312,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+.user-welcome {
+    color: #9db084;
+    font-weight: bold;
+}
