@@ -275,3 +275,40 @@ footer {
     line-height: 1.7;
     color: #d8d2c7;
 }
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.contact-card {
+    background-color: rgba(20, 20, 20, 0.88);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.contact-card h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #f0e7d8;
+    font-size: 24px;
+}
+
+.contact-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #d8d2c7;
+}
+
+.contact-card form {
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
