@@ -20,6 +20,7 @@ nav {
 nav h1 {
     color: #8fa879;
     margin: 0;
+    font-size: 48px;
 }
 
 nav ul {
@@ -34,12 +35,17 @@ nav ul li a {
     text-decoration: none;
     color: #d6d3c9;
     font-weight: bold;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    color: #8fa879;
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.70)),
                 url('images/banner.jpg') center/cover no-repeat;
-    min-height: 80vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,32 +54,54 @@ nav ul li a {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
 }
 
-.hero h2 {
-    font-size: 42px;
-    margin-bottom: 15px;
+.hero-logo {
+    width: 420px;
+    max-width: 90%;
+    margin-bottom: 25px;
 }
 
 .hero p {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    color: #f1ece2;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
 .btn {
     display: inline-block;
     background-color: #556b2f;
     color: white;
-    padding: 12px 22px;
+    padding: 14px 28px;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #6f8740;
+    transform: scale(1.05);
 }
 
 .section {
     padding: 50px 25px;
     max-width: 1100px;
     margin: auto;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 20px;
+    line-height: 1.7;
 }
 
 .product-grid {
@@ -87,6 +115,12 @@ nav ul li a {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(143, 168, 121, 0.2);
 }
 
 .card img {
@@ -96,6 +130,15 @@ nav ul li a {
     border-radius: 8px;
 }
 
+.card h3 {
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -103,7 +146,9 @@ form {
     max-width: 600px;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
     padding: 12px;
     border: none;
     border-radius: 6px;
@@ -116,9 +161,14 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #6f8740;
+}
+
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     background-color: #1a1a1a;
     margin-top: 40px;
+    font-size: 18px;
 }
