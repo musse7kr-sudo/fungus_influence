@@ -1,3 +1,31 @@
+<?php
+session_start();
+include 'db.php';
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($user = mysqli_fetch_assoc($result)) {
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $user['username'];
+            header("Location: index.php");
+            exit();
+        } else {
+            $message = "Fel lösenord.";
+        }
+    } else {
+        $message = "Ingen användare hittades med den e-posten.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -24,9 +52,14 @@
 
 <section class="section">
     <h2>Logga in</h2>
-    <form>
-        <input type="email" placeholder="E-post" required>
-        <input type="password" placeholder="Lösenord" required>
+
+    <?php if ($message): ?>
+        <p><?php echo $message; ?></p>
+    <?php endif; ?>
+
+    <form method="POST">
+        <input type="email" name="email" placeholder="E-post" required>
+        <input type="password" name="password" placeholder="Lösenord" required>
         <button type="submit">Logga in</button>
     </form>
 </section>
