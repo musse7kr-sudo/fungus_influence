@@ -45,16 +45,13 @@ session_start();
 <section class="section intro-section">
     <h2>Välkommen</h2>
     <p>
-        Fungus Influence är en inofficiell tribute-sida inspirerad av spelet och tv-serien
-        The Last of Us. Här visar vi upp mörk design, tematiska produkter och en stil som
-        passar den postapokalyptiska känslan.
+         Här visar vi en mörk design, passande produkter och en stil som ger en mörk framtidskänsla.
     </p>
 </section>
 
 <footer>
     <p>
-        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
-        till de officiella rättighetsinnehavarna.
+        Detta är en tribute-sida inspirerad av The Last of Us.
     </p>
 </footer>
 
