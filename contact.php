@@ -45,9 +45,8 @@
     <div class="contact-card">
         <h3>Information</h3>
         <p><strong>Projekt:</strong> Fungus Influence</p>
-        <p><strong>Typ:</strong> Inofficiell tribute-sida</p>
-        <p><strong>Fokus:</strong> Mörk design, merch och postapokalyptisk känsla</p>
-        <p><strong>Obs:</strong> Detta är ett skolprojekt och sidan är inte officiellt kopplad till rättighetsinnehavarna.</p>
+        <p><strong>Typ:</strong> Tribute-sida</p>
+        <p><strong>Fokus:</strong> Mörk design och merch </p>
     </div>
 </section>
 
