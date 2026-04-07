@@ -47,7 +47,7 @@
 </section>
 
 <footer>
-    <p>Detta är en inofficiell tribute-sida inspirerad av The Last of Us.</p>
+    <p>Detta är inspirerat av The Last of Us.</p>
 </footer>
 
 </body>
