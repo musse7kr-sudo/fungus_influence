@@ -36,9 +36,7 @@ session_start();
         <img src="images/logo.jpg" alt="The Last of Us logo" class="hero-logo">
 
         <p class="hero-text">
-            Utforska merch, atmosfär och en värld präglad av överlevnad,
-            förfall och svampinfektion.
-        </p>
+            Här finns merch om THE LAST US! Besök Gärna!     </p>
 
         <a href="merch.php" class="btn">Se merch</a>
     </div>
