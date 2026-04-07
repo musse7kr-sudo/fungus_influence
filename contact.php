@@ -53,8 +53,7 @@
 
 <footer>
     <p>
-        Detta är en inofficiell tribute-sida inspirerad av The Last of Us och är inte kopplad
-        till de officiella rättighetsinnehavarna.
+        Detta är inspirerat av The Last of Us.
     </p>
 </footer>
 
